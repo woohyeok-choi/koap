@@ -96,7 +96,7 @@ abstract class TypeToken<T> protected constructor() {
         internal val EMPTY_TYPE_ARRAY = arrayOf<Type>()
 
         internal fun canonicalize(type: Type): Type = when (type) {
-            is Class<*> -> if (type.isArray) GenericArrayTypeImpl(canonicalize(type.componentType)) else type
+            is Class<*> -> if (type.isArray) GenericArrayTypeImpl(canonicalize(type.componentType!!)) else type
             is ParameterizedType -> ParameterizedTypeImpl(type.ownerType, type.rawType, *type.actualTypeArguments)
             is GenericArrayType -> GenericArrayTypeImpl(type.genericComponentType)
             is WildcardType -> WildcardTypeImpl(type.upperBounds, type.lowerBounds)
