@@ -20,7 +20,7 @@ abstract class PreferenceHolder(
 ) {
     private var preferences: SharedPreferences? = null
 
-    internal fun bind(context: Context) {
+    fun bind(context: Context) {
         if (preferences == null) {
             preferences = getSharedPreferences(context, name, default, mode)
 
